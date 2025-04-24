@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>📩 إرسال رسالة</title>
+    <style>
+        body { background-color: #1e1e2f; color: white; font-family: Tahoma; text-align: center; }
+        form { margin-top: 100px; }
+        textarea { width: 300px; height: 100px; padding: 10px; border-radius: 5px; }
+        .btn { background: #00ffff; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px; cursor: pointer; }
+        .msg { margin-top: 15px; color: lime; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>📩 إرسال رسالة إلى جروب تيليجرام</h2>
+    <form method="post">
+        <textarea name="message" placeholder="اكتب الرسالة هنا..."></textarea><br>
+        <button class="btn">إرسال</button>
+        {% if success %}
+            <div class="msg">{{ success }}</div>
+        {% elif error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </form>
+</body>
+</html>
