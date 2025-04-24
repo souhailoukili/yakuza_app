@@ -14,8 +14,8 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # إعداد Telegram Bot
-BOT_TOKEN = "7917959648:AAF0v2_hN0xMwBJCgRYh80hlvpjW_JHSJJk"  # ⚠️ غيّرو بالتوكن ديالك
-CHAT_ID = "-1002525090227"  # ⚠️ ID ديال الجروب (بصيغة سالبة)
+BOT_TOKEN = "8138821973:AAE12GvrxhlS1kpJHDi6M4MgBSw9iwyBM-A"  # ⚠️ غيّرو بالتوكن ديالك
+CHAT_ID = "-1002697339023"  # ⚠️ ID ديال الجروب (بصيغة سالبة)
 
 ADMIN_PASSWORD = "yakuzapass"
 
@@ -133,3 +133,6 @@ def add_user():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# إضافة هذا السطر للتوافق مع Vercel
+app = app
