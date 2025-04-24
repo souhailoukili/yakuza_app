@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة الإدارة</title>
+    <style>
+        body { background-color: #121212; color: white; font-family: sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #333; text-align: center; }
+        a.btn { padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none; }
+        .block { background-color: red; }
+        .unblock { background-color: green; }
+    </style>
+</head>
+<body>
+    <h2>📋 لوحة تحكم YAKUZA</h2>
+    <a href="/logout" style="color: #00ffff;">⛔ خروج</a> |
+    <a href="/send" style="color: #00ffff;">📩 إرسال رسالة</a> |
+    <a href="/add-user" style="color: #00ffff;">➕ إضافة مستخدم</a>
+    <table>
+        <thead>
+            <tr>
+                <th>🆔 UID</th>
+                <th>👤 الاسم</th>
+                <th>💥 اللايكات</th>
+                <th>📅 الطلبات</th>
+                <th>🚫 الحظر</th>
+                <th>🔧 التحكم</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.get('user_id') }}</td>
+                <td>{{ user.get('username') }}</td>
+                <td>{{ user.get('likes_given', 0) }}</td>
+                <td>{{ user.get('daily_requests', 0) }}</td>
+                <td style="color: {{ 'red' if user.get('blocked') else 'lime' }}">
+                    {{ 'محظور' if user.get('blocked') else '✅ مسموح' }}
+                </td>
+                <td>
+                    {% if user.get('blocked') %}
+                        <a href="/unblock/{{ user.user_id }}" class="btn unblock">إلغاء الحظر</a>
+                    {% else %}
+                        <a href="/block/{{ user.user_id }}" class="btn block">حظر</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
